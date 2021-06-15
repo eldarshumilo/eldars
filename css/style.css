@@ -39,12 +39,14 @@
 
   .video-container {
     position:relative;
+    width: 100%;
+    height: 100%;
   }
 
   .layer {
     top: 0;
   }
-  
+
   .result{
     position: absolute;
     bottom: 5px;
@@ -56,11 +58,14 @@
   #pose-video {
     transform: scaleX(-1);
     width: 100%;
+    height: 100%;
     left: 0;
   }
 
 
   #pose-canvas{
     position: absolute;
+    top: 50%;
+    transform: translateY(-50%); 
     left: 0px;
   }
