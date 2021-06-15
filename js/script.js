@@ -102,8 +102,8 @@
       audio: false,
       video: {
         facingMode: "user",
-        width: width,
-        height: height,
+        width: height,
+        height: width,
         frameRate: { max: fps }
       }
     };
