@@ -1,3 +1,4 @@
+
  * {
     box-sizing: border-box;
     user-select: none;
@@ -7,6 +8,7 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
+    text-align: center;
     font-family: Arial, sans-serif;
     background-color: #333333;
     color: #ffffff;
@@ -34,13 +36,17 @@
     width: 100px;
     background-color: red;
   }
+  body {
+    margin: 0;
+  }
 
-.video-container {
+  .video-container {
+    position:relative;
     width: 100%;
     height: 100%;
-    position: relative;
-}
- 
+    
+  }
+
   .layer {
     position: absolute;
     top: 0;
@@ -62,7 +68,9 @@
   }
 
   #pose-canvas{
-     height: 100%;
-     width: 100%;
-     left: 0px;
+    width: 200%;
+    height: 100vh;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -90px;
   }

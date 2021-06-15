@@ -2,7 +2,7 @@
   const video = document.querySelector("#pose-video");
   
   const config = {
-    video: { width: 736, height: 414, fps: 30 }
+    video: { width: 734, height: 414, fps: 30 }
   };
 
   const res = document.querySelector(".result");
