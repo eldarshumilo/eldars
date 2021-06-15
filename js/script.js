@@ -1,9 +1,11 @@
   
   const video = document.querySelector("#pose-video");
-  
+  const widthVideo = video.clientWidth;
+  const heightVideo = video.offsetHeight;
   const config = {
-    video: { width: 734, height: 414, fps: 30 }
+    video: { width: widthVideo, height: heightVideo, fps: 30 }
   };
+  console.log(widthVideo);
 
   const res = document.querySelector(".result");
   const landmarkColors = {
@@ -30,7 +32,8 @@
     const ctx = canvas.getContext("2d");
 
 
-
+    // configure gesture estimator
+    // add "✌🏻" and "👍" as sample gestures
     const knownGestures = [
       fp.Gestures.VictoryGesture,
       fp.Gestures.ThumbsUpGesture
@@ -67,7 +70,7 @@
 
         // now estimate gestures based on landmarks
         // using a minimum confidence of 7.5 (out of 10)
-        const est = GE.estimate(predictions[i].landmarks, 7.5);
+        const est = GE.estimate(predictions[i].landmarks, 10);
 
         if(est.gestures.length > 0) {
 
