@@ -68,7 +68,7 @@
   }
 
   #pose-canvas{
-    width: 100%;
+    width: 150%;
     height: 100vh;
     top: 50%;
     transform: translateY(-50%);
