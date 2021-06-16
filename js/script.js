@@ -1,10 +1,12 @@
   
   const video = document.querySelector("#pose-video");
   const widthVideo = video.clientWidth;
-  const heightVideo = video.offsetHeight;
+  const heightVideo = video.clientHeight;
   const config = {
     video: { width: widthVideo, height: heightVideo, fps: 30 }
   };
+
+
   const res = document.querySelector(".result");
   const landmarkColors = {
     thumb: 'red',
@@ -33,7 +35,8 @@
 
     const knownGestures = [
       fp.Gestures.VictoryGesture,
-      fp.Gestures.ThumbsUpGesture
+      fp.Gestures.ThumbsUpGesture,
+      fp.Gestures.IndexUp
     ];
     const GE = new fp.GestureEstimator(knownGestures);
     redbox.style.display = 'none'
@@ -83,6 +86,9 @@
             } else if (result.name == "victory"){
               Box(bluebox, redbox);
               res.innerHTML = "It's 'Peace' =>";
+            } else if (result.name == "indexUp"){
+              Box(bluebox, redbox);
+              res.innerHTML = "Up";
             }        
           }
           addEvent();
