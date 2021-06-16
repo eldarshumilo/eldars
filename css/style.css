@@ -8,7 +8,6 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    text-align: center;
     font-family: Arial, sans-serif;
     background-color: #333333;
     color: #ffffff;
@@ -58,14 +57,13 @@
   #pose-video {
     transform: scaleX(-1);
     width: 100%;
-    height: 100%;
+
     left: 0;
   }
 
 
   #pose-canvas{
     position: absolute;
-    top: 50%;
-    transform: translateY(-35%);
+
     left: 0px;
   }
