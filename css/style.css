@@ -64,6 +64,6 @@
 
   #pose-canvas{
     position: absolute;
-
-    left: 0px;
+    left: 50%;
+    transform: translateX(-50%);
   }
