@@ -87,8 +87,8 @@
               Box(bluebox, redbox);
               res.innerHTML = "It's 'Peace' =>";
             } else if (result.name == "indexUp"){
-              let w = Math.round(predictions[i].annotations.indexFinger[0][0]);
-              let h = Math.round(predictions[i].annotations.indexFinger[0][1]);
+              let w = Math.round(predictions[i].annotations.indexFinger[3][0]);
+              let h = Math.round(predictions[i].annotations.indexFinger[3][1]);
               res.innerHTML = `x: ${w} y: ${h}`;
             }        
           }
