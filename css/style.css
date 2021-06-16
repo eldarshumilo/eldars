@@ -50,7 +50,7 @@
   .result{
     position: absolute;
     bottom: 5px;
-    font-size: 20px;
+    font-size: 50px;
     left: 50%;
     transform: translate(-50%, -50%);
   }
