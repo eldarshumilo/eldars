@@ -60,7 +60,7 @@
         // draw colored dots at each predicted joint position
         for(let part in predictions[i].annotations) {
           for(let point of predictions[i].annotations[part]) {
-            drawPoint(ctx, point[0], point[1], 3, landmarkColors[part]);
+            drawPoint(ctx, point[0], point[1], 10, landmarkColors[part]);
           }
         }
 
