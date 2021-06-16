@@ -3,7 +3,7 @@
   const widthVideo = video.clientWidth;
   const heightVideo = video.clientHeight;
   const config = {
-    video: { width: widthVideo, height: heightVideo, fps: 30 }
+    video: { width: widthVideo, height: heightVideo, fps: 60 }
   };
 
 
@@ -66,7 +66,7 @@
             drawPoint(ctx, point[0], point[1], 10, landmarkColors[part]);
           }
         }
-
+        
 
         // now estimate gestures based on landmarks
         // using a minimum confidence of 7.5 (out of 10)
@@ -87,8 +87,9 @@
               Box(bluebox, redbox);
               res.innerHTML = "It's 'Peace' =>";
             } else if (result.name == "indexUp"){
-              Box(bluebox, redbox);
-              res.innerHTML = "Up";
+              let w = Math.round(predictions[i].annotations.indexFinger[0][0]);
+              let h = Math.round(predictions[i].annotations.indexFinger[0][1]);
+              res.innerHTML = `x: ${w} y: ${h}`;
             }        
           }
           addEvent();
