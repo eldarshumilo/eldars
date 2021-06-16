@@ -62,6 +62,8 @@
             return C
         })), n.d(r, "ThumbsUpGesture", (function () {
             return j
+        })), n.d(r, "IndexUp", (function () {
+            return k
         }));
         var o = {
                 Thumb: 0,
@@ -728,7 +730,15 @@
             var _ = L[A];
             R.addCurl(_, a.FullCurl, 1), R.addDirection(_, l.HorizontalLeft, 1), R.addDirection(_, l.HorizontalRight, 1)
         }
-        var j = R;
+        var j = R,
+
+        Q = new S("indexUp");
+        Q.addCurl(o.Thumb, a.HalfCurl, .5), Q.addCurl(o.Thumb, a.NoCurl, .5), Q.addDirection(o.Thumb, l.VerticalUp, 1), Q.addDirection(o.Thumb, l.DiagonalUpLeft, 1), 
+        Q.addCurl(o.Index, a.NoCurl, 1), Q.addDirection(o.Index, l.VerticalUp, 1), Q.addDirection(o.Index, l.DiagonalUpLeft, 1), 
+        Q.addCurl(o.Middle, a.FullCurl, 1), Q.addDirection(o.Middle, l.VerticalUp, .2), Q.addDirection(o.Middle, l.DiagonalUpLeft, 1), Q.addDirection(o.Middle, l.HorizontalLeft, .2),
+        Q.addCurl(o.Ring, a.FullCurl, 1), Q.addDirection(o.Ring, l.VerticalUp, .2), Q.addDirection(o.Ring, l.DiagonalUpLeft, 1), Q.addDirection(o.Ring, l.HorizontalLeft, .2), 
+        Q.addCurl(o.Pinky, a.FullCurl, 1), Q.addDirection(o.Pinky, l.VerticalUp, .2), Q.addDirection(o.Pinky, l.DiagonalUpLeft, 1), Q.addDirection(o.Pinky, l.HorizontalLeft, .2), Q.setWeight(o.Index, 2), Q.setWeight(o.Middle, 2);
+        var k = Q;
 
         e.default = {
             GestureEstimator: m,
