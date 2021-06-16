@@ -56,7 +56,7 @@
 
   #pose-video {
     transform: scaleX(-1);
-
+    width:100%
 
     left: 0;
   }
