@@ -60,18 +60,12 @@
 
       for(let i = 0; i < predictions.length; i++) {
 
-        // draw colored dots at each predicted joint position
-        for(let part in predictions[i].annotations) {
-          for(let point of predictions[i].annotations[part]) {
-            drawPoint(ctx, point[0], point[1], 10, landmarkColors[part]);
-          }
-        }
         
-
         // now estimate gestures based on landmarks
         // using a minimum confidence of 7.5 (out of 10)
+        function resul(){
         const est = GE.estimate(predictions[i].landmarks, 7.5);
-
+        
         if(est.gestures.length > 0) {
 
           // find gesture with highest confidence
@@ -93,8 +87,23 @@
             }        
           }
           addEvent();
+          return result.name;
         }
       }
+      resul();
+      const dot = resul();
+      // draw colored dots at each predicted joint position
+        
+      if(dot !== 'indexUp'){
+        for(let part in predictions[i].annotations) {
+          for(let point of predictions[i].annotations[part]) {
+            drawPoint(ctx, point[0], point[1], 10, landmarkColors[part]);
+          }
+        }
+      } else {
+        drawPoint(ctx, predictions[i].annotations.indexFinger[3][0], predictions[i].annotations.indexFinger[3][1], 10, 'blue');
+      }
+    }
       // ...and so on
       setTimeout(() => { estimateHands(); }, 1000 / config.video.fps);
     };
