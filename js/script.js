@@ -3,7 +3,7 @@
   const widthVideo = video.clientWidth;
   const heightVideo = video.clientHeight;
   const config = {
-    video: { width: widthVideo, height: heightVideo, fps: 60 }
+    video: { width: window.screen.width, height: window.screen.height, fps: 60 }
   };
 
 
@@ -163,8 +163,7 @@
     canvas.width = config.video.width;
     canvas.height = config.video.height;
     console.log("Canvas initialized");
-    console.log(canvas.height);
-    console.log(canvas.width);
+
     const fall = document.querySelector(".fall");
     fall.innerHTML = `w: ${canvas.width} h: ${canvas.height}`
 
