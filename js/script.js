@@ -3,7 +3,7 @@
   const widthVideo = video.clientWidth;
   const heightVideo = video.clientHeight;
   const config = {
-    video: { width: window.screen.width, height: window.screen.height, fps: 60 }
+    video: { width: widthVideo, height: heightVideo, fps: 60 }
   };
 
 
@@ -34,6 +34,7 @@
     
     const canvas = document.querySelector("#pose-canvas");
     const ctx = canvas.getContext("2d");
+
 
     const knownGestures = [
       fp.Gestures.VictoryGesture,
@@ -163,8 +164,7 @@
     canvas.width = config.video.width;
     canvas.height = config.video.height;
     console.log("Canvas initialized");
-
-    const fall = document.querySelector(".fall");
-    fall.innerHTML = `w: ${canvas.width} h: ${canvas.height}`
+    console.log(canvas.height);
+    console.log(canvas.width);
 
   });
