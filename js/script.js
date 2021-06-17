@@ -169,7 +169,7 @@
     const displayHeight = window.screen.height;
     const ratio = Math.round(displayHeight/displayWidth * 100 + Number.EPSILON) / 100
     if(ratio === 1.78){
-      canvas.style.top = '20%';
+      canvas.style.top = '18%';
     } else if ( ratio == 2){
       canvas.style.top = '22%';
     }
