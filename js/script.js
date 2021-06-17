@@ -172,8 +172,19 @@
       canvas.style.top = '18%';
     } else if ( ratio == 2){
       canvas.style.top = '22%';
+    } else if (ratio == 2.11) {
+      canvas.style.top = '23%';
+    } 
+    else if (ratio == 2.17){
+      canvas.style.top = '24%';
     }
-   
+    else if (ratio == 2.22) {
+      canvas.style.top = '25%';
+    } 
+    else if (ratio == 2.33){
+      canvas.style.top = '26%';
+    }
+    console.log(ratio);
   
     canvas.width = config.video.width;
     canvas.height = config.video.height;
