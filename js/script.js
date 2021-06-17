@@ -15,13 +15,17 @@
     ringFinger: 'green',
     pinky: 'pink',
     palmBase: 'white'
+    
   };
+
   const redbox = document.querySelector('.redbox'); 
   const bluebox = document.querySelector('.bluebox'); 
   function Box (boxOn, boxOff){
     boxOn.style.display = 'block'; 
     boxOff.style.display = 'none'; 
-    setTimeout(()=>{boxOn.style.display = 'none'; res.innerHTML='';}, 2000)
+    clearTimeout(off);
+    var off = setTimeout(()=>{boxOn.style.display = 'none'; res.innerHTML='';}, 2000)
+    
   };
 
 
@@ -30,8 +34,6 @@
     
     const canvas = document.querySelector("#pose-canvas");
     const ctx = canvas.getContext("2d");
-
-
 
     const knownGestures = [
       fp.Gestures.VictoryGesture,
@@ -83,6 +85,7 @@
             } else if (result.name == "indexUp"){
               let w = Math.round(predictions[i].annotations.indexFinger[3][0]);
               let h = Math.round(predictions[i].annotations.indexFinger[3][1]);
+
               res.innerHTML = `x: ${w} y: ${h}`;
             }        
           }
@@ -131,6 +134,7 @@
     // get video stream
     const stream = await navigator.mediaDevices.getUserMedia(constraints);
     video.srcObject = stream;
+    console.log(stream);
 
     return new Promise(resolve => {
       video.onloadedmetadata = () => { resolve(video) };
@@ -159,4 +163,9 @@
     canvas.width = config.video.width;
     canvas.height = config.video.height;
     console.log("Canvas initialized");
+    console.log(canvas.height);
+    console.log(canvas.width);
+    const fall = document.querySelector(".fall");
+    fall.innerHTML = `w: ${canvas.width} h: ${canvas.height}`
+
   });
