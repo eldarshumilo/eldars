@@ -149,6 +149,9 @@
     ctx.fill();
   }
 
+
+
+
   window.addEventListener("DOMContentLoaded", () => {
     initCamera(
       config.video.width, config.video.height, config.video.fps
@@ -160,11 +163,20 @@
       });
     });
 
+
     const canvas = document.querySelector("#pose-canvas");
+    const displayWidth = window.screen.width;
+    const displayHeight = window.screen.height;
+    const ratio = Math.round(displayHeight/displayWidth * 100 + Number.EPSILON) / 100
+    if(ratio === 1.78){
+      canvas.style.top = '20%';
+    } else if ( ratio == 2){
+      canvas.style.top = '22%';
+    }
+   
+  
     canvas.width = config.video.width;
     canvas.height = config.video.height;
-    console.log("Canvas initialized");
-    console.log(canvas.height);
-    console.log(canvas.width);
+
 
   });
