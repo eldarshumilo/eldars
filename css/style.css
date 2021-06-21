@@ -46,7 +46,13 @@
     top: 0;
   }
   
-
+  .fall{
+    position: absolute;
+    top: 5px;
+    font-size: 40px; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
   .result{
     position: absolute;
     bottom: 5px;
@@ -57,8 +63,7 @@
 
   #pose-video {
     transform: scaleX(-1);
-    height: 100%;
-    width: 100%;
+
     left: 0;
   }
 

@@ -2,23 +2,35 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name='viewport' content='width=device-width,initial-scale=0.4'/>
+  <meta name='viewport' content='width=device-width,initial-scale=1'/>
   <meta content='true' name='HandheldFriendly'/>
   <meta content='width' name='MobileOptimized'/>
   <meta content='yes' name='apple-mobile-web-app-capable'/>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/handpose"></script>
+  <script type="text/javascript" src="js/webcam.min.js"></script>
   <script src="js/fingerpose.js" type="text/javascript"></script>
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+  
+	
+  
     <div class="video-container"> 
-      <video id="pose-video" class="layer" playsinline></video>
-      <canvas id="pose-canvas" class="layer"></canvas>
+      <script language="JavaScript">
+        Webcam.set({
+          width: 100,
+          height: 100,
+          image_format: 'jpeg',
+          jpeg_quality: 90
+        });
+        Webcam.attach( '.video-container' );
+      </script>
+      <canvas id="pose-canvas" class="layer" ></canvas>
     </div>
-    <div class = "redbox"></div>
     <div class = "fall"></div>
+    <div class = "redbox"></div>
     <div class = "result"></div>
     <div class = "bluebox"></div>
   <script src='js/script.js' type='module'></script>
