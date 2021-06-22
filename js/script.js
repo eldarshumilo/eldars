@@ -1,6 +1,6 @@
 const video = document.querySelector("#pose-video");
-  const widthVideo = video.offsetWidth * window.devicePixelRatio;
-  const heightVideo = video.offsetHeight * window.devicePixelRatio;
+  const widthVideo = video.offsetWidth;
+  const heightVideo = video.offsetHeight; 
   const config = {
     video: { width: widthVideo, height: heightVideo, fps: 60 }
   };
@@ -111,13 +111,13 @@ const video = document.querySelector("#pose-video");
          } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent) && ratio == 2.17) {
             for(let part in predictions[i].annotations) {
               for(let point of predictions[i].annotations[part]) {
-                drawPoint(ctx, point[0] - (0.45 * video.width), point[1], 10, landmarkColors[part]);
+                drawPoint(ctx, point[0] - (0 * video.width), point[1], 10, landmarkColors[part]);
               }
             }
           } else{
             for(let part in predictions[i].annotations) {
               for(let point of predictions[i].annotations[part]) {
-                drawPoint(ctx, point[0]+(0.07 * video.width), point[1], 10, landmarkColors[part]);
+                drawPoint(ctx, point[0], point[1], 10, landmarkColors[part]);
               }
             } 
           }
@@ -125,9 +125,9 @@ const video = document.querySelector("#pose-video");
         if (/iPhone|iPad|iPod/i.test(navigator.userAgent) || ratio !== 2.16) {
           drawPoint(ctx, predictions[i].annotations.indexFinger[3][0], predictions[i].annotations.indexFinger[3][1], 10, 'blue');
         } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent) || ratio == 2.16) {
-          drawPoint(ctx, predictions[i].annotations.indexFinger[3][0] - (0.45 * video.width), predictions[i].annotations.indexFinger[3][1], 10, 'blue');
+          drawPoint(ctx, predictions[i].annotations.indexFinger[3][0] - (0 * video.width), predictions[i].annotations.indexFinger[3][1], 10, 'blue');
         } else {
-          drawPoint(ctx, predictions[i].annotations.indexFinger[3][0] + (0.07 * video.width), predictions[i].annotations.indexFinger[3][1], 10, 'blue');
+          drawPoint(ctx, predictions[i].annotations.indexFinger[3][0], predictions[i].annotations.indexFinger[3][1], 10, 'blue');
         }
       }
     }
@@ -193,7 +193,7 @@ const video = document.querySelector("#pose-video");
     if(/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
       canvas.width = config.video.width * window.devicePixelRatio
       canvas.height = config.video.height * window.devicePixelRatio 
-      canvas.getContext('2d').scale(window.devicePixelRatio*0.85, window.devicePixelRatio*0.85);
+      canvas.getContext('2d').scale(window.devicePixelRatio, window.devicePixelRatio);
     } else{
       canvas.width = config.video.width;
       canvas.height = config.video.height;
@@ -205,7 +205,7 @@ const video = document.querySelector("#pose-video");
     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
      
       if(ratio == 1.78){
-        document.getElementsByTagName('meta')[1].setAttribute( 'content', 'width=device-width,initial-scale=0.1');
+        document.getElementsByTagName('meta')[1].setAttribute( 'content', 'width=device-width,initial-scale=0.5');
           canvas.style.top = '20%';
       } else if ( ratio == 2){
         canvas.style.top = '21%';
@@ -213,7 +213,7 @@ const video = document.querySelector("#pose-video");
         canvas.style.top = '22%';
       } else if (ratio == 2.17 || ratio == 2.16){  
         canvas.style.top = '33%';
-        document.getElementsByTagName('meta')[1].setAttribute( 'content', 'width=device-width,initial-scale=0.1');
+        document.getElementsByTagName('meta')[1].setAttribute( 'content', 'width=device-width,initial-scale=0.35');
       }
     } else {
       if(ratio === 1.78){
