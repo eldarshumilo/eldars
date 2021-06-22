@@ -190,15 +190,22 @@ const video = document.querySelector("#pose-video");
     const displayHeight = window.screen.height;
     const ratio = Math.round(displayHeight/displayWidth * 100 + Number.EPSILON) / 100
 
- 
+    if(/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+      canvas.width = config.video.width * window.devicePixelRatio;
+      canvas.height = config.video.height * window.devicePixelRatio;
+      canvas.getContext('2d').scale(window.devicePixelRatio, window.devicePixelRatio);
+    } else{
       canvas.width = config.video.width;
       canvas.height = config.video.height;
-      canvas.getContext('2d').scale(window.devicePixelRatio, window.devicePixelRatio);
+    }
+    
+     
+
 
     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
      
       if(ratio == 1.78){
-  
+        document.getElementsByTagName('meta')[1].setAttribute( 'content', 'width=device-width,initial-scale=0.1');
           canvas.style.top = '20%';
       } else if ( ratio == 2){
         canvas.style.top = '21%';
@@ -206,7 +213,7 @@ const video = document.querySelector("#pose-video");
         canvas.style.top = '22%';
       } else if (ratio == 2.17 || ratio == 2.16){  
         canvas.style.top = '33%';
-        document.getElementsByTagName('meta')[1].setAttribute( 'content', 'width=device-width,initial-scale=0.55');
+        document.getElementsByTagName('meta')[1].setAttribute( 'content', 'width=device-width,initial-scale=0.1');
       }
     } else {
       if(ratio === 1.78){
