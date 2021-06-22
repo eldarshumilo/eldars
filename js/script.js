@@ -200,8 +200,9 @@ const video = document.querySelector("#pose-video");
     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
      
       if(ratio == 1.78){
-         document.getElementsByTagName('meta')[1].setAttribute( 'content', 'width=device-width,initial-scale=0.4');
+         document.getElementsByTagName('meta')[1].setAttribute( 'content', 'width=device-width,initial-scale=0.42');
           canvas.style.top = '15%';
+          canvas.style.left = '10%';
       } else if ( ratio == 2){
         canvas.style.top = '21%';
       } else if (ratio == 2.11) {
