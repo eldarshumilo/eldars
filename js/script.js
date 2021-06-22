@@ -101,7 +101,6 @@ const video = document.querySelector("#pose-video");
       const displayWidth = window.screen.width;
       const displayHeight = window.screen.height;
       const ratio = Math.round(displayHeight/displayWidth * 100 + Number.EPSILON) / 100
-      console.log(ratio);
       if(dot !== 'indexUp'){
         if (/iPhone|iPad|iPod/i.test(navigator.userAgent) && ratio !== 2.17) {
           for(let part in predictions[i].annotations) {
@@ -113,7 +112,6 @@ const video = document.querySelector("#pose-video");
             for(let part in predictions[i].annotations) {
               for(let point of predictions[i].annotations[part]) {
                 drawPoint(ctx, point[0] - (0.42 * video.width), point[1], 10, landmarkColors[part]);
-                console.log(1 * video.width);
               }
             }
           } else{
@@ -195,14 +193,13 @@ const video = document.querySelector("#pose-video");
  
       canvas.width = config.video.width;
       canvas.height = config.video.height;
-
+      canvas.getContext('2d').scale(window.devicePixelRatio, window.devicePixelRatio);
 
     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
      
       if(ratio == 1.78){
-         document.getElementsByTagName('meta')[1].setAttribute( 'content', 'width=device-width,initial-scale=0.4');
-          canvas.style.top = '21%';
-          canvas.style.left = '15%';
+  
+          canvas.style.top = '20%';
       } else if ( ratio == 2){
         canvas.style.top = '21%';
       } else if (ratio == 2.11) {
