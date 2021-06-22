@@ -111,7 +111,7 @@ const video = document.querySelector("#pose-video");
          } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent) && ratio == 2.17) {
             for(let part in predictions[i].annotations) {
               for(let point of predictions[i].annotations[part]) {
-                drawPoint(ctx, point[0] - (0.42 * video.width), point[1], 10, landmarkColors[part]);
+                drawPoint(ctx, point[0] - (0.45 * video.width), point[1], 10, landmarkColors[part]);
               }
             }
           } else{
@@ -125,7 +125,7 @@ const video = document.querySelector("#pose-video");
         if (/iPhone|iPad|iPod/i.test(navigator.userAgent) || ratio !== 2.16) {
           drawPoint(ctx, predictions[i].annotations.indexFinger[3][0], predictions[i].annotations.indexFinger[3][1], 10, 'blue');
         } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent) || ratio == 2.16) {
-          drawPoint(ctx, predictions[i].annotations.indexFinger[3][0] - (0.42 * video.width), predictions[i].annotations.indexFinger[3][1], 10, 'blue');
+          drawPoint(ctx, predictions[i].annotations.indexFinger[3][0] - (0.45 * video.width), predictions[i].annotations.indexFinger[3][1], 10, 'blue');
         } else {
           drawPoint(ctx, predictions[i].annotations.indexFinger[3][0] + (0.07 * video.width), predictions[i].annotations.indexFinger[3][1], 10, 'blue');
         }
@@ -191,9 +191,9 @@ const video = document.querySelector("#pose-video");
     const ratio = Math.round(displayHeight/displayWidth * 100 + Number.EPSILON) / 100
 
     if(/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-      canvas.width = config.video.width * window.devicePixelRatio;
-      canvas.height = config.video.height * window.devicePixelRatio;
-      canvas.getContext('2d').scale(window.devicePixelRatio, window.devicePixelRatio);
+      canvas.width = config.video.width * window.devicePixelRatio
+      canvas.height = config.video.height * window.devicePixelRatio 
+      canvas.getContext('2d').scale(window.devicePixelRatio*0.85, window.devicePixelRatio*0.85);
     } else{
       canvas.width = config.video.width;
       canvas.height = config.video.height;
