@@ -5,7 +5,7 @@ const video = document.querySelector("#pose-video");
     video: { width: widthVideo, height: heightVideo, fps: 60 }
   };
   const res = document.querySelector(".result");
-  res.innerHTML = "Initialization";
+  res.innerHTML = "Initialization1";
 
  
   const landmarkColors = {
@@ -18,7 +18,7 @@ const video = document.querySelector("#pose-video");
     
   };
   
-  res.innerHTML = "Initialization2";
+
   const redbox = document.querySelector('.redbox'); 
   const bluebox = document.querySelector('.bluebox'); 
   function Box (boxOn, boxOff){
@@ -29,10 +29,10 @@ const video = document.querySelector("#pose-video");
     
   };
 
-  res.innerHTML = "Initialization3";
+  res.innerHTML = "Initialization2";
   async function main() {
 
-    res.innerHTML = "Initialization4";
+
     const canvas = document.querySelector("#pose-canvas");
     const ctx = canvas.getContext("2d");
 
@@ -47,7 +47,7 @@ const video = document.querySelector("#pose-video");
     bluebox.style.display = 'none'
 
     // load handpose model
-    res.innerHTML = "Initialization5";
+    res.innerHTML = "Initialization3";
     const model = await handpose.load();
     res.innerHTML = "Initialization done";
     console.log("Handpose model loaded");
