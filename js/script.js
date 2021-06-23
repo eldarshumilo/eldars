@@ -102,33 +102,33 @@ const video = document.querySelector("#pose-video");
       const displayHeight = window.screen.height;
       const ratio = Math.round(displayHeight/displayWidth * 100 + Number.EPSILON) / 100
       if(dot !== 'indexUp'){
-        if (/iPhone|iPad|iPod/i.test(navigator.userAgent) && ratio !== 2.17) {
-          for(let part in predictions[i].annotations) {
-            for(let point of predictions[i].annotations[part]) {
-              drawPoint(ctx, point[0], point[1], 10, landmarkColors[part]);
-            }
-          }
-         } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent) && ratio == 2.17) {
-            for(let part in predictions[i].annotations) {
-              for(let point of predictions[i].annotations[part]) {
-                drawPoint(ctx, point[0] - (0 * video.width), point[1], 10, landmarkColors[part]);
-              }
-            }
-          } else{
+        // if (/iPhone|iPad|iPod/i.test(navigator.userAgent) && ratio !== 2.17) {
+        //   for(let part in predictions[i].annotations) {
+        //     for(let point of predictions[i].annotations[part]) {
+        //       drawPoint(ctx, point[0], point[1], 10, landmarkColors[part]);
+        //     }
+        //   }
+        //  } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent) && ratio == 2.17) {
+        //     for(let part in predictions[i].annotations) {
+        //       for(let point of predictions[i].annotations[part]) {
+        //         drawPoint(ctx, point[0] - (0 * video.width), point[1], 10, landmarkColors[part]);
+        //       }
+        //     }
+        //   } else{
             for(let part in predictions[i].annotations) {
               for(let point of predictions[i].annotations[part]) {
                 drawPoint(ctx, point[0], point[1], 10, landmarkColors[part]);
               }
             } 
-          }
+          // }
       } else {
-        if (/iPhone|iPad|iPod/i.test(navigator.userAgent) || ratio !== 2.16) {
+        // if (/iPhone|iPad|iPod/i.test(navigator.userAgent) || ratio !== 2.16) {
+        //   drawPoint(ctx, predictions[i].annotations.indexFinger[3][0], predictions[i].annotations.indexFinger[3][1], 10, 'blue');
+        // } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent) || ratio == 2.16) {
+        //   drawPoint(ctx, predictions[i].annotations.indexFinger[3][0] - (0 * video.width), predictions[i].annotations.indexFinger[3][1], 10, 'blue');
+        // } else {
           drawPoint(ctx, predictions[i].annotations.indexFinger[3][0], predictions[i].annotations.indexFinger[3][1], 10, 'blue');
-        } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent) || ratio == 2.16) {
-          drawPoint(ctx, predictions[i].annotations.indexFinger[3][0] - (0 * video.width), predictions[i].annotations.indexFinger[3][1], 10, 'blue');
-        } else {
-          drawPoint(ctx, predictions[i].annotations.indexFinger[3][0], predictions[i].annotations.indexFinger[3][1], 10, 'blue');
-        }
+        // }
       }
     }
       // ...and so on
@@ -190,53 +190,53 @@ const video = document.querySelector("#pose-video");
     const displayHeight = window.screen.height;
     const ratio = Math.round(displayHeight/displayWidth * 100 + Number.EPSILON) / 100
 
-    if(/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-      canvas.width = config.video.width * window.devicePixelRatio
-      canvas.height = config.video.height * window.devicePixelRatio 
-      canvas.getContext('2d').scale(window.devicePixelRatio, window.devicePixelRatio);
-    } else{
+    // if(/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    //   canvas.width = config.video.width * window.devicePixelRatio
+    //   canvas.height = config.video.height * window.devicePixelRatio 
+    //   canvas.getContext('2d').scale(window.devicePixelRatio*0.85, window.devicePixelRatio*0.85);
+    // } else{
       canvas.width = config.video.width;
       canvas.height = config.video.height;
-    }
+    // }
     
      
 
 
-    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+  //   if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
      
-      if(ratio == 1.78){
-        document.getElementsByTagName('meta')[1].setAttribute( 'content', 'width=device-width,initial-scale=0.4');
-          canvas.style.top = '20%';
-      } else if ( ratio == 2){
-        canvas.style.top = '21%';
-      } else if (ratio == 2.11) {
-        canvas.style.top = '22%';
-      } else if (ratio == 2.17 || ratio == 2.16){  
-        canvas.style.top = '33%';
-        document.getElementsByTagName('meta')[1].setAttribute( 'content', 'width=device-width,initial-scale=0.2');
-      }
-    } else {
-      if(ratio === 1.78){
-        canvas.style.top = '21%';
-        document.getElementsByTagName('meta')[1].setAttribute( 'content', 'width=device-width,initial-scale=0.95');
-      } else if ( ratio == 2){
-        canvas.style.top = '25%';
-        document.getElementsByTagName('meta')[1].setAttribute( 'content', 'width=device-width,initial-scale=0.95');
-      } else if (ratio == 2.11) {
-        canvas.style.top = '27%';
-        document.getElementsByTagName('meta')[1].setAttribute( 'content', 'width=device-width,initial-scale=0.8');
-      } 
-      else if (ratio == 2.17){
-        canvas.style.top = '28%';
-        document.getElementsByTagName('meta')[1].setAttribute( 'content', 'width=device-width,initial-scale=0.8');
-      }
-      else if (ratio == 2.22) {
-        canvas.style.top = '27%';
-        document.getElementsByTagName('meta')[1].setAttribute( 'content', 'width=device-width,initial-scale=1');
-      } 
-      else if (ratio == 2.33){
-        canvas.style.top = '30%';
-        document.getElementsByTagName('meta')[1].setAttribute( 'content', 'width=device-width,initial-scale=0.8');
-      }   
-  }
+  //     if(ratio == 1.78){
+  //       document.getElementsByTagName('meta')[1].setAttribute( 'content', 'width=device-width,initial-scale=0.4');
+  //         canvas.style.top = '20%';
+  //     } else if ( ratio == 2){
+  //       canvas.style.top = '21%';
+  //     } else if (ratio == 2.11) {
+  //       canvas.style.top = '22%';
+  //     } else if (ratio == 2.17 || ratio == 2.16){  
+  //       canvas.style.top = '25%';
+  //       document.getElementsByTagName('meta')[1].setAttribute( 'content', 'width=device-width,initial-scale=0.35');
+  //     }
+  //   } else {
+  //     if(ratio === 1.78){
+  //       canvas.style.top = '21%';
+  //       document.getElementsByTagName('meta')[1].setAttribute( 'content', 'width=device-width,initial-scale=0.95');
+  //     } else if ( ratio == 2){
+  //       canvas.style.top = '25%';
+  //       document.getElementsByTagName('meta')[1].setAttribute( 'content', 'width=device-width,initial-scale=0.95');
+  //     } else if (ratio == 2.11) {
+  //       canvas.style.top = '27%';
+  //       document.getElementsByTagName('meta')[1].setAttribute( 'content', 'width=device-width,initial-scale=0.8');
+  //     } 
+  //     else if (ratio == 2.17){
+  //       canvas.style.top = '28%';
+  //       document.getElementsByTagName('meta')[1].setAttribute( 'content', 'width=device-width,initial-scale=0.8');
+  //     }
+  //     else if (ratio == 2.22) {
+  //       canvas.style.top = '27%';
+  //       document.getElementsByTagName('meta')[1].setAttribute( 'content', 'width=device-width,initial-scale=1');
+  //     } 
+  //     else if (ratio == 2.33){
+  //       canvas.style.top = '30%';
+  //       document.getElementsByTagName('meta')[1].setAttribute( 'content', 'width=device-width,initial-scale=0.8');
+  //     }   
+  // }
   });
