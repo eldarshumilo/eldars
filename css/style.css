@@ -62,6 +62,7 @@
     transform: scaleX(-1);
     top:0;
     left: 0;
+    object-fit: cover;
   }
 
   #pose-canvas{
