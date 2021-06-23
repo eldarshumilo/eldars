@@ -4,9 +4,10 @@ const video = document.querySelector("#pose-video");
   const config = {
     video: { width: widthVideo, height: heightVideo, fps: 60 }
   };
-
-
   const res = document.querySelector(".result");
+  res.innerHTML = "Initialization";
+
+ 
   const landmarkColors = {
     thumb: 'red',
     indexFinger: 'blue',
@@ -47,7 +48,7 @@ const video = document.querySelector("#pose-video");
 
     // load handpose model
     const model = await handpose.load();
-    res.innerHTML = "Handpose model loaded";
+    res.innerHTML = "Initialization done";
     console.log("Handpose model loaded");
 
     // main estimation loop
@@ -198,8 +199,12 @@ const video = document.querySelector("#pose-video");
       canvas.width = config.video.width;
       canvas.height = config.video.height;
     // }
-    
-     
+   
+    if(window.location.search.indexOf('wd=') != -1){
+      var currentValue = window.location.search.replace(/\?/, '').split('=');
+      var getParams = currentValue[1];
+     }
+     console.log(getParams);
 
 
   //   if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
