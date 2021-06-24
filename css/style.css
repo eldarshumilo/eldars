@@ -37,9 +37,9 @@
   }
 
   .video-container {
-    position:relative;
-    width: 500px;
-    height: 700px;
+    position:absolute;
+    bottom:0px;
+    
   }
 
   
@@ -54,6 +54,7 @@
     position: absolute;
     bottom: 5px;
     font-size: 30px;
+    text-align: center;
     left: 50%;
     transform: translate(-50%, -50%);
   }

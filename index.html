@@ -16,7 +16,7 @@
 <body>
   
 	
-  
+    <canvas id="draw-canvas"  style="background-color:#eee;"></canvas>
     <div class="video-container"> 
       <script language="JavaScript">
         if(window.location.search.indexOf('wd=') != -1){
@@ -26,7 +26,7 @@
             width = currentValue[1]
           }
          } else {
-           var width = 60;
+           var width = 50;
          }
         Webcam.set({
           width: 100,

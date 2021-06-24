@@ -2,12 +2,11 @@ const video = document.querySelector("#pose-video");
   const widthVideo = video.offsetWidth;
   const heightVideo = video.offsetHeight; 
   const config = {
-    video: { width: widthVideo, height: heightVideo, fps: 60 }
+    video: { width: widthVideo, height: heightVideo, fps: 30 }
   };
   const res = document.querySelector(".result");
   res.innerHTML = "Initialization1";
 
- 
   const landmarkColors = {
     thumb: 'red',
     indexFinger: 'blue',
@@ -17,7 +16,6 @@ const video = document.querySelector("#pose-video");
     palmBase: 'white'
     
   };
-  
 
   const redbox = document.querySelector('.redbox'); 
   const bluebox = document.querySelector('.bluebox'); 
@@ -31,12 +29,15 @@ const video = document.querySelector("#pose-video");
 
   res.innerHTML = "Initialization2";
   async function main() {
-
-
+    var canvasDraw = document.getElementById("draw-canvas"), 
+    context = canvasDraw.getContext("2d");
+    canvasDraw.height = config.video.height;
+    canvasDraw.width = config.video.width;
+    context.beginPath();
+    
     const canvas = document.querySelector("#pose-canvas");
     const ctx = canvas.getContext("2d");
-
-
+    
     const knownGestures = [
       fp.Gestures.VictoryGesture,
       fp.Gestures.ThumbsUpGesture,
@@ -58,7 +59,6 @@ const video = document.querySelector("#pose-video");
       // clear canvas overlay
       ctx.clearRect(0, 0, config.video.width, config.video.height);
     
-
       // get hand landmarks from video
       // Note: Handpose currently only detects one hand at a time
       // Therefore the maximum number of predictions is 1
@@ -89,7 +89,6 @@ const video = document.querySelector("#pose-video");
             } else if (result.name == "indexUp"){
               let w = Math.round(predictions[i].annotations.indexFinger[3][0]);
               let h = Math.round(predictions[i].annotations.indexFinger[3][1]);
-
               res.innerHTML = `x: ${w} y: ${h}`;
             }        
           }
@@ -100,23 +99,22 @@ const video = document.querySelector("#pose-video");
       resul();
       const dot = resul();
       // draw colored dots at each predicted joint position
-      const displayWidth = window.screen.width;
-      const displayHeight = window.screen.height;
-      const ratio = Math.round(displayHeight/displayWidth * 100 + Number.EPSILON) / 100
+
       if(dot !== 'indexUp'){
-         for(let part in predictions[i].annotations) {
-            for(let point of predictions[i].annotations[part]) {
-              drawPoint(ctx, point[0], point[1], 10, landmarkColors[part]);
-            }
-          } 
-      } else {
-          drawPoint(ctx, predictions[i].annotations.indexFinger[3][0], predictions[i].annotations.indexFinger[3][1], 10, 'blue');
+        
+        drawSmth(context, predictions[i].annotations.indexFinger[3][0], predictions[i].annotations.indexFinger[3][1], 1);
+        context.moveTo(predictions[0].annotations.indexFinger[3][0], predictions[0].annotations.indexFinger[3][1]);
+        for(let part in predictions[i].annotations) {
+          for(let point of predictions[i].annotations[part]) {
+            drawPoint(ctx, point[0], point[1], 10, landmarkColors[part]);
+          }
+        } 
       }
     }
       // ...and so on
       setTimeout(() => { estimateHands(); }, 1000 / config.video.fps);
     };
-
+   
     estimateHands();
     console.log("Starting predictions");
   }
@@ -146,6 +144,15 @@ const video = document.querySelector("#pose-video");
     });
   }
 
+
+  function drawSmth(context, x, y) {  
+        context.lineTo(x, y);
+        context.stroke();
+        console.log(x, y);
+        
+      }
+     
+
   function drawPoint(ctx, x, y, r, color) {
     ctx.beginPath();
     ctx.arc(x, y, r, 0, 2 * Math.PI);
@@ -162,17 +169,13 @@ const video = document.querySelector("#pose-video");
         main();
       });
     });
+
+
     const canvas = document.querySelector("#pose-canvas");
-    const displayWidth = window.screen.width;
-    const displayHeight = window.screen.height;
-    const ratio = Math.round(displayHeight/displayWidth * 100 + Number.EPSILON) / 100  
+
       canvas.width = config.video.width;
       canvas.height = config.video.height;
 
-   
-    if(window.location.search.indexOf('wd=') != -1){
-      var currentValue = window.location.search.replace(/\?/, '').split('=');
-      var getParams = currentValue[1];
-     }
-     console.log(getParams);
+    
+ 
   });
