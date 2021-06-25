@@ -42,6 +42,10 @@ async function main() {
     context = canvasDraw.getContext("2d");
   canvasDraw.height = config.video.height;
   canvasDraw.width = config.video.width;
+  var redPoint = document.getElementById("redPointCanvas"),
+    contextRed = redPoint.getContext("2d");
+    redPoint.height = config.video.height;
+    redPoint.width = config.video.width;
   //context.beginPath();
 
 
@@ -52,7 +56,8 @@ async function main() {
   const knownGestures = [
     fp.Gestures.VictoryGesture,
     fp.Gestures.ThumbsUpGesture,
-    fp.Gestures.IndexUp
+    fp.Gestures.IndexUp,
+    fp.Gestures.ThumbCurl
   ];
   const GE = new fp.GestureEstimator(knownGestures);
   redbox.style.display = 'none'
@@ -70,16 +75,22 @@ async function main() {
     cds.clearRect(0, 0, width, height);
     cds.closePath();
   }
+  function stopDraw(cds){
+    cds.beginPath()
+    cds.closePath();
+  }
   // main estimation loop
   const estimateHands = async () => {
 
     // clear canvas overlay
     ctx.clearRect(0, 0, config.video.width, config.video.height);
+    contextRed.clearRect(0, 0, config.video.width, config.video.height);
+
 
     
 
     // get hand landmarks from video
-    // Note: Handpose currently only detects one hand at a time
+    // Note: Handpose currently only detects one hand at a time 
     // Therefore the maximum number of predictions is 1
     const predictions = await model.estimateHands(video, true);
 
@@ -103,27 +114,34 @@ async function main() {
               Box(redbox, bluebox);
               res.innerHTML = "<= It's 'Like'";
             } else if (result.name == "victory") {
-              Box(bluebox, redbox);
-
+              Box(bluebox, redbox);0
               res.innerHTML = "It's 'Peace' =>";
             } else if (result.name == "indexUp") {
               let w = Math.round(predictions[i].annotations.indexFinger[3][0]);
               let h = Math.round(predictions[i].annotations.indexFinger[3][1]);
               res.innerHTML = `x: ${w} y: ${h}`;
+            } else if (result.name == "thumbCurl"){
+              res.innerHTML = "It's 'MoveGest'";
+              console.log('sdcds')
             }
           }
           addEvent();
-          const dot = result
+     
           return result.name
         }
-      }
+      } 
+    
       //resul();
       const dot =  resul();
-      if (dot=="victory"){
+      if (dot=="thumbs_up"){
         clear(context, config.video.width, config.video.height);
+      } else if (dot =='thumbCurl'){
+        stopDraw(context);
       }
 
       drawSmth(context, predictions[i].annotations.indexFinger[3][0], predictions[i].annotations.indexFinger[3][1], 1);
+
+      drawPoint(contextRed,  predictions[i].annotations.indexFinger[3][0], predictions[i].annotations.indexFinger[3][1], 3, 'red')
       context.moveTo(predictions[0].annotations.indexFinger[3][0], predictions[0].annotations.indexFinger[3][1]);
       for (let part in predictions[i].annotations) {
         for (let point of predictions[i].annotations[part]) {
@@ -176,12 +194,9 @@ async function initCamera(width, height, fps) {
   });
 }
 
-
-function drawSmth(context, x, y) {
-  //context.beginPath();
-  context.lineTo(x, y);
-  context.stroke();
-  //context.closePath();
+function drawSmth(cont, x, y) {
+  cont.lineTo(x, y);
+  cont.stroke();
   console.log(x, y);
 }
 
