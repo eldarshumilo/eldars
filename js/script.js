@@ -114,7 +114,7 @@ async function main() {
               Box(redbox, bluebox);
               res.innerHTML = "<= It's 'Like'";
             } else if (result.name == "victory") {
-              Box(bluebox, redbox);0
+              Box(bluebox, redbox);
               res.innerHTML = "It's 'Peace' =>";
             } else if (result.name == "indexUp") {
               let w = Math.round(predictions[i].annotations.indexFinger[3][0]);
@@ -133,22 +133,22 @@ async function main() {
     
       //resul();
       const dot =  resul();
-      if (dot=="thumbs_up"){
-        clear(context, config.video.width, config.video.height);
-      } else if (dot =='thumbCurl'){
-        stopDraw(context);
-      }
+      
 
       drawSmth(context, predictions[i].annotations.indexFinger[3][0], predictions[i].annotations.indexFinger[3][1], 1);
-
-      drawPoint(contextRed,  predictions[i].annotations.indexFinger[3][0], predictions[i].annotations.indexFinger[3][1], 3, 'red')
-      context.moveTo(predictions[0].annotations.indexFinger[3][0], predictions[0].annotations.indexFinger[3][1]);
+      drawPoint(contextRed,  predictions[i].annotations.indexFinger[3][0], predictions[i].annotations.indexFinger[3][1], 3, 'green');
+      context.moveTo(predictions[i].annotations.indexFinger[3][0], predictions[i].annotations.indexFinger[3][1]);
       for (let part in predictions[i].annotations) {
         for (let point of predictions[i].annotations[part]) {
           drawPoint(ctx, point[0], point[1], 10, landmarkColors[part]);
         }
       }
-      
+      if (dot=="thumbs_up"){
+        clear(context, config.video.width, config.video.height);
+      } else if (dot =='victory'){
+        drawPoint(contextRed,  predictions[i].annotations.indexFinger[3][0], predictions[i].annotations.indexFinger[3][1], 3, 'red');
+        stopDraw(context);
+      }
       // draw colored dots at each predicted joint position 
     }
     // ...and so on
