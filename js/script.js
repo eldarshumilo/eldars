@@ -1,6 +1,7 @@
 const video = document.querySelector("#pose-video");
 const widthVideo = video.offsetWidth;
 const heightVideo = video.offsetHeight;
+
 const config = {
   video: {
     width: widthVideo,
@@ -8,6 +9,9 @@ const config = {
     fps: 30
   }
 };
+const canvas = document.querySelector("#pose-canvas");
+  canvas.width = config.video.width;
+  canvas.height = config.video.height;
 const res = document.querySelector(".result");
 res.innerHTML = "Initialization1";
 
@@ -20,6 +24,14 @@ const landmarkColors = {
   palmBase: 'white'
 
 };
+const canvasDraw = document.getElementById("draw-canvas"),
+    context = canvasDraw.getContext("2d");
+  canvasDraw.height = config.video.height;
+  canvasDraw.width = config.video.width;
+const redPoint = document.getElementById("redPointCanvas"),
+    contextRed = redPoint.getContext("2d");
+    redPoint.height = config.video.height;
+    redPoint.width = config.video.width;
 
 const redbox = document.querySelector('.redbox');
 const bluebox = document.querySelector('.bluebox');
@@ -38,17 +50,8 @@ function Box(boxOn, boxOff) {
 
 res.innerHTML = "Initialization2";
 async function main() {
-  var canvasDraw = document.getElementById("draw-canvas"),
-    context = canvasDraw.getContext("2d");
-  canvasDraw.height = config.video.height;
-  canvasDraw.width = config.video.width;
-  var redPoint = document.getElementById("redPointCanvas"),
-    contextRed = redPoint.getContext("2d");
-    redPoint.height = config.video.height;
-    redPoint.width = config.video.width;
+  
   //context.beginPath();
-
-
 
   const canvas = document.querySelector("#pose-canvas");
   const ctx = canvas.getContext("2d");
@@ -220,7 +223,5 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  const canvas = document.querySelector("#pose-canvas");
-  canvas.width = config.video.width;
-  canvas.height = config.video.height;
+  
 });
