@@ -1,8 +1,7 @@
-const res = document.querySelector(".result");
-res.innerHTML='Loading';
-document.addEventListener("DOMContentLoaded", ready);
-function ready() {
 
+
+window.addEventListener('load', function ready() {
+  const res = document.querySelector(".result");
   res.innerHTML='';
 
 const video = document.querySelector("#pose-video");
@@ -26,6 +25,7 @@ const config = {
 const canvas = document.querySelector("#pose-canvas");
   canvas.width = config.video.width;
   canvas.height = config.video.height;
+ 
 
 const landmarkColors = {
   thumb: 'red',
@@ -251,4 +251,4 @@ window.addEventListener("DOMContentLoaded", () => {
   
 });
 
-}
+}, false);
