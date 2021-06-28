@@ -13,7 +13,6 @@ const canvas = document.querySelector("#pose-canvas");
   canvas.width = config.video.width;
   canvas.height = config.video.height;
 const res = document.querySelector(".result");
-res.innerHTML = "Initialization1";
 
 const landmarkColors = {
   thumb: 'red',
@@ -48,7 +47,6 @@ function Box(boxOn, boxOff) {
 
 };
 
-res.innerHTML = "Initialization2";
 async function main() {
   
   //context.beginPath();
@@ -67,9 +65,7 @@ async function main() {
   bluebox.style.display = 'none'
 
   // load handpose model
-  res.innerHTML = "Initialization3";
   const model = await handpose.load();
-  res.innerHTML = "Initialization done";
   console.log("Handpose model loaded");
 
 
@@ -82,13 +78,14 @@ async function main() {
     cds.beginPath()
     cds.closePath();
   }
+  context.moveTo(config.video.width*0.5, config.video.height*0.5);
   // main estimation loop
   const estimateHands = async () => {
 
     // clear canvas overlay
     ctx.clearRect(0, 0, config.video.width, config.video.height);
     contextRed.clearRect(0, 0, config.video.width, config.video.height);
-
+    
 
     
 
@@ -136,22 +133,27 @@ async function main() {
     
       //resul();
       const dot =  resul();
-      
+     
 
-      drawSmth(context, (predictions[i].annotations.indexFinger[3][0]*3)-300, (predictions[i].annotations.indexFinger[3][1]*3)-300, 1);
-      drawPoint(contextRed, (predictions[i].annotations.indexFinger[3][0]*3)-300, (predictions[i].annotations.indexFinger[3][1]*3)-300, 3, 'green');
-      context.moveTo((predictions[i].annotations.indexFinger[3][0]*3)-300, (predictions[i].annotations.indexFinger[3][1]*3)-300);
+      if (dot=="thumbs_up"){
+        clear(context, config.video.width, config.video.height);
+      } else if (dot =='victory'){
+        drawSmth(context, (predictions[i].annotations.indexFinger[3][0]*2)-300, (predictions[i].annotations.indexFinger[3][1]*2)-150);
+        drawPoint(contextRed, (predictions[i].annotations.indexFinger[3][0]*2)-300, (predictions[i].annotations.indexFinger[3][1]*2)-150, 5, 'green');
+        context.moveTo((predictions[i].annotations.indexFinger[3][0]*2)-300, (predictions[i].annotations.indexFinger[3][1]*2)-150);
+      } else if (dot=='indexUp'){
+        drawPoint(contextRed,  (predictions[i].annotations.indexFinger[3][0]*2)-300, (predictions[i].annotations.indexFinger[3][1]*2)-150, 5, 'red');
+        stopDraw(context);
+      }
+
+
+      
       for (let part in predictions[i].annotations) {
         for (let point of predictions[i].annotations[part]) {
           drawPoint(ctx, point[0], point[1], 10, landmarkColors[part]);
         }
       }
-      if (dot=="thumbs_up"){
-        clear(context, config.video.width, config.video.height);
-      } else if (dot =='victory'){
-        drawPoint(contextRed,  (predictions[i].annotations.indexFinger[3][0]*3)-300, (predictions[i].annotations.indexFinger[3][1]*3)-300, 3, 'red');
-        setTimeout(stopDraw(context), 2000);
-      }
+     
       // draw colored dots at each predicted joint position 
     }
     // ...and so on
@@ -211,6 +213,7 @@ function drawPoint(ctx, x, y, r, color) {
   ctx.fill();
   ctx.closePath();
 }
+
 
 window.addEventListener("DOMContentLoaded", () => {
   initCamera(
