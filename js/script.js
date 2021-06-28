@@ -2,6 +2,17 @@ const video = document.querySelector("#pose-video");
 const widthVideo = video.offsetWidth;
 const heightVideo = video.offsetHeight;
 
+
+window.onload = function () {
+  document.body.classList.add('loaded_hiding');
+  window.setTimeout(function () {
+    document.body.classList.add('loaded');
+    document.body.classList.remove('loaded_hiding');
+  }, 500);
+}
+
+
+
 const config = {
   video: {
     width: widthVideo,
@@ -46,7 +57,7 @@ function Box(boxOn, boxOff) {
   }, 2000)
 
 };
-
+  var toggle = false;
 async function main() {
   
   //context.beginPath();
@@ -133,15 +144,24 @@ async function main() {
     
       //resul();
       const dot =  resul();
-     
-
+      var tempWidth = predictions[i].annotations.indexFinger[3][0]
+      
+      
       if (dot=="thumbs_up"){
         clear(context, config.video.width, config.video.height);
-      } else if (dot =='victory'){
+      } 
+      if (dot =='thumbCurl'){
+        if(toggle == false){
+          toggle = true;
+        } else {
+          toggle = false;
+        }
+      }
+      if (toggle == false){
         drawSmth(context, (predictions[i].annotations.indexFinger[3][0]*2)-300, (predictions[i].annotations.indexFinger[3][1]*2)-150);
         drawPoint(contextRed, (predictions[i].annotations.indexFinger[3][0]*2)-300, (predictions[i].annotations.indexFinger[3][1]*2)-150, 5, 'green');
         context.moveTo((predictions[i].annotations.indexFinger[3][0]*2)-300, (predictions[i].annotations.indexFinger[3][1]*2)-150);
-      } else if (dot=='indexUp'){
+      } else{ 
         drawPoint(contextRed,  (predictions[i].annotations.indexFinger[3][0]*2)-300, (predictions[i].annotations.indexFinger[3][1]*2)-150, 5, 'red');
         stopDraw(context);
       }

@@ -744,11 +744,11 @@
         var k = Q,
 
         X = new S("thumbCurl");
-        X.addCurl(o.Thumb, a.HalfCurl, .5), X.addCurl(o.Thumb, a.NoCurl, .5), X.addDirection(o.Thumb, l.VerticalUp, 1), X.addDirection(o.Thumb, l.DiagonalUpLeft, 1), 
-        X.addCurl(o.Index, a.NoCurl, .1), X.addDirection(o.Index, l.VerticalUp, .75),
-        X.addCurl(o.Middle, a.NoCurl, .1), X.addDirection(o.Middle, l.VerticalUp, .1),  
-        X.addCurl(o.Ring, a.FullCurl, .1), X.addDirection(o.Ring, l.VerticalUp, .2), X.addDirection(o.Ring, l.DiagonalUpLeft, 1), X.addDirection(o.Ring, l.HorizontalLeft, .2), 
-        X.addCurl(o.Pinky, a.FullCurl, .1), X.addDirection(o.Pinky, l.VerticalUp, .2), X.addDirection(o.Pinky, l.DiagonalUpLeft, 1), X.addDirection(o.Pinky, l.HorizontalLeft, .2), X.setWeight(o.Index, 2), X.setWeight(o.Middle, 2);
+        X.addCurl(o.Thumb, a.HalfCurl, 1), X.addCurl(o.Thumb, a.HalfCurl, .5), X.addDirection(o.Thumb, l.VerticalUp, 1), X.addDirection(o.Thumb, l.DiagonalUpLeft, 1), 
+        X.addCurl(o.Index, a.NoCurl, 1), X.addDirection(o.Index, l.VerticalUp, .75), X.addDirection(o.Index, l.DiagonalUpLeft, 1), X.addDirection(o.Index, l.DiagonalUpRight, 1), 
+        X.addCurl(o.Middle, a.NoCurl, 1), X.addDirection(o.Middle, l.VerticalUp, 1), X.addDirection(o.Middle, l.DiagonalUpLeft, .75), X.addDirection(o.Middle, l.DiagonalUpRight, .75), 
+        X.addCurl(o.Ring, a.NoCurl, 1), X.addDirection(o.Ring, l.VerticalUp, .2), X.addDirection(o.Ring, l.DiagonalUpLeft, 1), X.addDirection(o.Ring, l.HorizontalLeft, .2), 
+        X.addCurl(o.Pinky, a.NoCurl, 1), X.addDirection(o.Pinky, l.VerticalUp, .2), X.addDirection(o.Pinky, l.DiagonalUpLeft, 1), X.addDirection(o.Pinky, l.HorizontalLeft, .2), X.setWeight(o.Thumb, 2);
         var z = X;
 
         e.default = {
