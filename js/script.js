@@ -6,8 +6,6 @@ const video = document.querySelector("#pose-video");
 const widthVideo = video.offsetWidth;
 const heightVideo = video.offsetHeight;
 
-
-
 const config = {
   video: {
     width: widthVideo,
@@ -18,7 +16,6 @@ const config = {
 const canvas = document.querySelector("#pose-canvas");
   canvas.width = config.video.width;
   canvas.height = config.video.height;
- 
 
 const landmarkColors = {
   thumb: 'red',
@@ -41,20 +38,8 @@ const redPoint = document.getElementById("redPointCanvas"),
 const redbox = document.querySelector('.redbox');
 const bluebox = document.querySelector('.bluebox');
 
-function Box(boxOn, boxOff) {
-  boxOn.style.display = 'block';
-  boxOff.style.display = 'none';
-
-  clearTimeout(off);
-  var off = setTimeout(() => {
-    boxOn.style.display = 'none';
-    res.innerHTML = '';
-  }, 2000)
-
-};
   var toggle = false;
 async function main() {
-  
   //context.beginPath();
 
   const canvas = document.querySelector("#pose-canvas");
@@ -91,10 +76,6 @@ async function main() {
     // clear canvas overlay
     ctx.clearRect(0, 0, config.video.width, config.video.height);
     contextRed.clearRect(0, 0, config.video.width, config.video.height);
-    
-
-    
-
     // get hand landmarks from video
     // Note: Handpose currently only detects one hand at a time 
     // Therefore the maximum number of predictions is 1
@@ -117,11 +98,9 @@ async function main() {
 
           function addEvent() {
             if (result.name == "thumbs_up") {
-              Box(redbox, bluebox);
-              res.innerHTML = "<= It's 'Like'";
+              res.innerHTML = "CLEAR";
             } else if (result.name == "victory") {
-              Box(bluebox, redbox);
-              res.innerHTML = "It's 'Peace' =>";
+              res.innerHTML = "SOME ACTION";
             } else if (result.name == "indexUp") {
               let w = Math.round(predictions[i].annotations.indexFinger[3][0]);
               let h = Math.round(predictions[i].annotations.indexFinger[3][1]);
@@ -136,12 +115,8 @@ async function main() {
           return result.name
         }
       } 
-    
       //resul();
       const dot =  resul();
-     
-      
-      
       if (dot=="thumbs_up"){
         clear(context, config.video.width, config.video.height);
       } 
@@ -153,7 +128,7 @@ async function main() {
         }
       }
 
-        if (toggle == true){
+      if (toggle == true){
         drawSmth(context, (predictions[i].annotations.indexFinger[3][0]*2)-300, (predictions[i].annotations.indexFinger[3][1]*2)-150);
         drawPoint(contextRed, (predictions[i].annotations.indexFinger[3][0]*2)-300, (predictions[i].annotations.indexFinger[3][1]*2)-150, 5, 'green');
         context.moveTo((predictions[i].annotations.indexFinger[3][0]*2)-300, (predictions[i].annotations.indexFinger[3][1]*2)-150);
@@ -171,21 +146,17 @@ async function main() {
           }
         }
       }
-     
+          
       // draw colored dots at each predicted joint position 
     }
     // ...and so on
     setTimeout(() => {
       estimateHands();
-    }, 1000 / config.video.fps);
-    
+    }, 1000 / config.video.fps);  
   };
-
+  
   estimateHands();
-
-
   console.log("Starting predictions");
-
 }
 
 async function initCamera(width, height, fps) {
@@ -232,7 +203,6 @@ function drawPoint(ctx, x, y, r, color) {
   ctx.closePath();
 }
 
-
 window.addEventListener("DOMContentLoaded", () => {
   initCamera(
     config.video.width, config.video.height, config.video.fps
@@ -242,9 +212,4 @@ window.addEventListener("DOMContentLoaded", () => {
       main();
     });
   });
-
-
-
 });
-
-
