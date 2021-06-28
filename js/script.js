@@ -153,21 +153,22 @@ async function main() {
         }
       }
 
-      if (toggle == true){
+        if (toggle == true){
         drawSmth(context, (predictions[i].annotations.indexFinger[3][0]*2)-300, (predictions[i].annotations.indexFinger[3][1]*2)-150);
         drawPoint(contextRed, (predictions[i].annotations.indexFinger[3][0]*2)-300, (predictions[i].annotations.indexFinger[3][1]*2)-150, 5, 'green');
         context.moveTo((predictions[i].annotations.indexFinger[3][0]*2)-300, (predictions[i].annotations.indexFinger[3][1]*2)-150);
+        for (let part in predictions[i].annotations) {
+          for (let point of predictions[i].annotations[part]) {
+            drawPoint(ctx, point[0], point[1], 10, landmarkColors[part]);
+          }
+        }
       } else{ 
         drawPoint(contextRed,  (predictions[i].annotations.indexFinger[3][0]*2)-300, (predictions[i].annotations.indexFinger[3][1]*2)-150, 5, 'red');
         stopDraw(context);
-      }
-   
-
-
-      
-      for (let part in predictions[i].annotations) {
-        for (let point of predictions[i].annotations[part]) {
-          drawPoint(ctx, point[0], point[1], 10, landmarkColors[part]);
+        for (let part in predictions[i].annotations) {
+          for (let point of predictions[i].annotations[part]) {
+            drawPoint(ctx, point[0], point[1], 10, 'red');
+          }
         }
       }
      
