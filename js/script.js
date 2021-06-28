@@ -160,7 +160,7 @@ async function main() {
         }
       }
 
-      if (toggle == false){
+      if (toggle == true){
         drawSmth(context, (predictions[i].annotations.indexFinger[3][0]*2)-300, (predictions[i].annotations.indexFinger[3][1]*2)-150);
         drawPoint(contextRed, (predictions[i].annotations.indexFinger[3][0]*2)-300, (predictions[i].annotations.indexFinger[3][1]*2)-150, 5, 'green');
         context.moveTo((predictions[i].annotations.indexFinger[3][0]*2)-300, (predictions[i].annotations.indexFinger[3][1]*2)-150);
