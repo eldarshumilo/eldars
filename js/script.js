@@ -1,17 +1,10 @@
-
-
-
-  const res = document.querySelector(".result");
-  res.innerHTML='';
+const load = document.querySelector('.load')
+const res = document.querySelector(".result");
+res.innerHTML='';
 
 const video = document.querySelector("#pose-video");
 const widthVideo = video.offsetWidth;
 const heightVideo = video.offsetHeight;
-
-
-
-
-
 
 
 
@@ -81,7 +74,7 @@ async function main() {
   const model = await handpose.load();
   console.log("Handpose model loaded");
 
-
+  load.style.display="none";
   function clear(cds, width, height) {
     cds.beginPath();
     cds.clearRect(0, 0, width, height);
@@ -146,7 +139,7 @@ async function main() {
     
       //resul();
       const dot =  resul();
-      var tempWidth = predictions[i].annotations.indexFinger[3][0]
+     
       
       
       if (dot=="thumbs_up"){
@@ -250,7 +243,7 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  
+
 });
 
 

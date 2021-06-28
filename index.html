@@ -6,7 +6,6 @@
   <meta content='true' name='HandheldFriendly'/>
   <meta content='width' name='MobileOptimized'/>
   <meta content='yes' name='apple-mobile-web-app-capable'/>
-  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/handpose"></script>
   <script type="text/javascript" src="js/webcam.min.js"></script>
@@ -16,11 +15,13 @@
 
 <body>
   
-	
+  <div class = "load">Loading</div>
   
     <canvas id="draw-canvas"  style="background-color:#eee;"></canvas>
     <canvas id="redPointCanvas"  style="position: absolute; left: 0px;"></canvas>
+ 
     <div class="video-container"> 
+      
       <script language="JavaScript">
         if(window.location.search.indexOf('wd=') != -1){
           var currentValue = window.location.search.replace(/\?/, '').split('=');
@@ -43,15 +44,8 @@
     </div>
     <div class = "fall"></div>
     <div class = "redbox"></div>
-    <div class = "result">Loading</div>
+    <div class = "result"></div>
     <div class = "bluebox"></div>
-    
-    <script type="text/javascript">
-      $('body').css('opacity', 0);
-      $(window).load(function() {
-        $('body').css('opacity', 1);
-      });
-      </script>
   
   <script src='js/script.js' type='module'></script>
 </body>
