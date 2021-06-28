@@ -728,7 +728,7 @@
         var C = T,
         
         R = new S("thumbs_up");
-        R.addCurl(o.Pinky, a.HalfCurl, 1), R.addDirection(o.Pinky, l.VerticalUp, 1), R.addDirection(o.Pinky, l.DiagonalUpLeft, .25), R.addDirection(o.Pinky, l.DiagonalUpRight, .25);
+        R.addCurl(o.Pinky, a.HalfCurl, 1.5), R.addDirection(o.Pinky, l.VerticalUp, 1), R.addDirection(o.Pinky, l.DiagonalUpLeft, .5), R.addDirection(o.Pinky, l.DiagonalUpRight, .5);
         for (var A = 0, L = [o.Thumb, o.Index, o.Middle, o.Ring, ]; A < L.length; A++) {
             var _ = L[A];
             R.addCurl(_, a.NoCurl, 1), R.addDirection(_, l.VerticalUp, 1), R.addDirection(_, l.DiagonalUpLeft, .25), R.addDirection(_, l.DiagonalUpRight, .25);
