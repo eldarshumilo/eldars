@@ -1,6 +1,6 @@
 
 
-window.addEventListener('load', function ready() {
+
   const res = document.querySelector(".result");
   res.innerHTML='';
 
@@ -159,6 +159,7 @@ async function main() {
           toggle = false;
         }
       }
+
       if (toggle == false){
         drawSmth(context, (predictions[i].annotations.indexFinger[3][0]*2)-300, (predictions[i].annotations.indexFinger[3][1]*2)-150);
         drawPoint(contextRed, (predictions[i].annotations.indexFinger[3][0]*2)-300, (predictions[i].annotations.indexFinger[3][1]*2)-150, 5, 'green');
@@ -167,6 +168,7 @@ async function main() {
         drawPoint(contextRed,  (predictions[i].annotations.indexFinger[3][0]*2)-300, (predictions[i].annotations.indexFinger[3][1]*2)-150, 5, 'red');
         stopDraw(context);
       }
+   
 
 
       
@@ -251,4 +253,4 @@ window.addEventListener("DOMContentLoaded", () => {
   
 });
 
-}, false);
+
