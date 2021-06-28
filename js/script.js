@@ -138,9 +138,9 @@ async function main() {
       const dot =  resul();
       
 
-      drawSmth(context, predictions[i].annotations.indexFinger[3][0], predictions[i].annotations.indexFinger[3][1], 1);
-      drawPoint(contextRed,  predictions[i].annotations.indexFinger[3][0], predictions[i].annotations.indexFinger[3][1], 3, 'green');
-      context.moveTo(predictions[i].annotations.indexFinger[3][0], predictions[i].annotations.indexFinger[3][1]);
+      drawSmth(context, (predictions[i].annotations.indexFinger[3][0]*3)-300, (predictions[i].annotations.indexFinger[3][1]*3)-300, 1);
+      drawPoint(contextRed, (predictions[i].annotations.indexFinger[3][0]*3)-300, (predictions[i].annotations.indexFinger[3][1]*3)-300, 3, 'green');
+      context.moveTo((predictions[i].annotations.indexFinger[3][0]*3)-300, (predictions[i].annotations.indexFinger[3][1]*3)-300);
       for (let part in predictions[i].annotations) {
         for (let point of predictions[i].annotations[part]) {
           drawPoint(ctx, point[0], point[1], 10, landmarkColors[part]);
@@ -149,7 +149,7 @@ async function main() {
       if (dot=="thumbs_up"){
         clear(context, config.video.width, config.video.height);
       } else if (dot =='victory'){
-        drawPoint(contextRed,  predictions[i].annotations.indexFinger[3][0], predictions[i].annotations.indexFinger[3][1], 3, 'red');
+        drawPoint(contextRed,  (predictions[i].annotations.indexFinger[3][0]*3)-300, (predictions[i].annotations.indexFinger[3][1]*3)-300, 3, 'red');
         stopDraw(context);
       }
       // draw colored dots at each predicted joint position 
