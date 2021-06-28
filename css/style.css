@@ -54,6 +54,7 @@
     position: absolute;
     bottom: 5px;
     font-size: 30px;
+    color: black;
     text-align: center;
     left: 50%;
     transform: translate(-50%, -50%);

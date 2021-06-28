@@ -1,15 +1,18 @@
+const res = document.querySelector(".result");
+res.innerHTML='Loading';
+document.addEventListener("DOMContentLoaded", ready);
+function ready() {
+
+  res.innerHTML='';
+
 const video = document.querySelector("#pose-video");
 const widthVideo = video.offsetWidth;
 const heightVideo = video.offsetHeight;
 
 
-window.onload = function () {
-  document.body.classList.add('loaded_hiding');
-  window.setTimeout(function () {
-    document.body.classList.add('loaded');
-    document.body.classList.remove('loaded_hiding');
-  }, 500);
-}
+
+
+
 
 
 
@@ -23,7 +26,6 @@ const config = {
 const canvas = document.querySelector("#pose-canvas");
   canvas.width = config.video.width;
   canvas.height = config.video.height;
-const res = document.querySelector(".result");
 
 const landmarkColors = {
   thumb: 'red',
@@ -248,3 +250,5 @@ window.addEventListener("DOMContentLoaded", () => {
 
   
 });
+
+}
