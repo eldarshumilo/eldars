@@ -728,10 +728,10 @@
         var C = T,
         
         R = new S("thumbs_up");
-        R.addCurl(o.Thumb, a.NoCurl, 1), R.addDirection(o.Thumb, l.VerticalUp, 1), R.addDirection(o.Thumb, l.DiagonalUpLeft, .25), R.addDirection(o.Thumb, l.DiagonalUpRight, .25);
-        for (var A = 0, L = [o.Index, o.Middle, o.Ring, o.Pinky]; A < L.length; A++) {
+        R.addCurl(o.Pinky, a.HalfCurl, 1), R.addDirection(o.Pinky, l.VerticalUp, 1), R.addDirection(o.Pinky, l.DiagonalUpLeft, .25), R.addDirection(o.Pinky, l.DiagonalUpRight, .25);
+        for (var A = 0, L = [o.Thumb, o.Index, o.Middle, o.Ring, ]; A < L.length; A++) {
             var _ = L[A];
-            R.addCurl(_, a.FullCurl, 1), R.addDirection(_, l.HorizontalLeft, 1), R.addDirection(_, l.HorizontalRight, 1)
+            R.addCurl(_, a.NoCurl, 1), R.addDirection(_, l.VerticalUp, 1), R.addDirection(_, l.DiagonalUpLeft, .25), R.addDirection(_, l.DiagonalUpRight, .25);
         }
         var j = R,
 
