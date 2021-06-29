@@ -728,11 +728,11 @@
         var C = T,
         
         R = new S("thumbs_up");
-        R.addCurl(o.Pinky, a.HalfCurl, 1.5), R.addDirection(o.Pinky, l.VerticalUp, 1), R.addDirection(o.Pinky, l.DiagonalUpLeft, .5), R.addDirection(o.Pinky, l.DiagonalUpRight, .5);
-        for (var A = 0, L = [o.Thumb, o.Index, o.Middle, o.Ring, ]; A < L.length; A++) {
-            var _ = L[A];
-            R.addCurl(_, a.NoCurl, 1), R.addDirection(_, l.VerticalUp, 1), R.addDirection(_, l.DiagonalUpLeft, .25), R.addDirection(_, l.DiagonalUpRight, .25);
-        }
+        R.addCurl(o.Thumb, a.NoCurl, 1),   R.addCurl(o.Thumb, a.NoCurl, .5),  R.addDirection(o.Thumb, l.VerticalUp, 1), R.addDirection(o.Thumb, l.DiagonalUpLeft, 1), 
+        R.addCurl(o.Index, a.NoCurl, 1), R.addDirection(o.Index, l.VerticalUp, .5), R.addDirection(o.Index, l.DiagonalUpLeft, .5), R.addDirection(o.Index, l.DiagonalUpRight, .5), 
+        R.addCurl(o.Middle, a.FullCurl, 1), R.addDirection(o.Middle, l.VerticalUp, 1), R.addDirection(o.Middle, l.DiagonalUpLeft, 1), R.addDirection(o.Middle, l.DiagonalUpRight, 1), 
+        R.addCurl(o.Ring, a.FullCurl, 1), R.addDirection(o.Ring, l.VerticalUp, 1), R.addDirection(o.Ring, l.DiagonalUpLeft, 1), R.addDirection(o.Ring, l.HorizontalLeft, 1), 
+        R.addCurl(o.Pinky, a.NoCurl, 1), R.addDirection(o.Pinky, l.VerticalUp, .5), R.addDirection(o.Pinky, l.DiagonalUpLeft, .5), R.addDirection(o.Pinky, l.HorizontalLeft, .5), R.setWeight(o.Middle, 3), R.setWeight(o.Ring, 3);
         var j = R,
 
         Q = new S("indexUp");
