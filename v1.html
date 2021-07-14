@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width,initial-scale=1' />
+    <meta content='true' name='HandheldFriendly' />
+    <meta content='width' name='MobileOptimized' />
+    <meta content='yes' name='apple-mobile-web-app-capable' />
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/webcam.min.js"></script>
+    <script src="js/tfjs.js"></script>
+    <script src="js/handpose.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.4.0/socket.io.js"
+        integrity="sha512-Y8KodDCDqst1e8z0EGKiqEQq3T8NszmgW2HvsC6+tlNw7kxYxHTLl5Iw/gqZj/6qhZdBt+jYyOsybgSAiB9OOA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/fingerpose.js"></script>
+
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-J8H1EES644');
+    </script>
+</head>
+
+<body id='body' >
+    <div class="load">
+        <div class="lds-spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+
+    <!-- camera page -->
+
+    <div class='camera'>
+        <input type="text" mozactionhint="next" id='inp' />
+        <button class="gradient-button" id="input" style="width: 80px;" onclick='obj.connectToWebSocket(dnp.value)'>Input</button>
+        <div class="video-container">
+
+            <script language="JavaScript">
+              var params = {};
+
+              if (location.search) {
+                  var parts = location.search.substring(1).split('&');
+              
+                  for (var i = 0; i < parts.length; i++) {
+                      var nv = parts[i].split('=');
+                      if (!nv[0]) continue;
+                      params[nv[0]] = nv[1] || true;
+                  }
+              }
+              var height= params.wd;
+              
+              
+                Webcam.set({
+                    width: 100,
+                    height: height,
+                    image_format: 'jpeg',
+                    jpeg_quality: 90
+                });
+                Webcam.attach('.video-container');
+            </script>
+
+            <canvas id="pose-canvas"></canvas>
+        </div>
+        <div class='result'></div>
+    </div>
+
+
+
+    <!-- canvas page -->
+
+    <div class='canv'>
+        <div class="canv-btn">
+          <button class="gradient-button" id="qr-auth-btn" style="width: 80px;" onclick="showPhotos()">Auth</button>
+          <label>Sensetive:</label>
+          <input id='sensetive' type="range" min="0.5" max="5" step="0.5" value="2"> 
+        </div>
+        <img id="qr-auth-img" class="hidden" style="width:300px; height:300px;" src="">
+        <canvas id="draw-canvas" style="background-color:#eee;"></canvas>
+        <canvas id="redPointCanvas"></canvas>
+    </div>
+
+
+    <!-- toggle between main windows -->
+
+   <script src='js/main_script.js'></script>
+    <script src='js/script camera.js' type='module'></script>
+    <script src="js/qr-auth.js"></script>
+</body>
+
+</html>

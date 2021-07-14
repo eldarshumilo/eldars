@@ -13,34 +13,11 @@
     color: #ffffff;
   }
 
-
-  .bluebox{
-    bottom: 0px;
-    right: 0px;
-    position: absolute;
-    display: none;
-    height: 100px;
-    width: 100px;
-    background-color: blue;
-  }
-  .redbox{
-    bottom: 0px;
-    left: 0px;
-    position: absolute;
-    display: none;
-    height: 100px;
-    width: 100px;
-    background-color: red;
-  }
   body {
     margin: 0;
   }
 
-  .video-container {
-    position:absolute;
-    bottom:0px;
-    
-  }
+ 
 
   
   .fall{
@@ -150,18 +127,104 @@
   }
 }
 
+  .hidden {
+    visibility: hidden;
+  } 
 
+  .show {
+    visibility: visible;
+  }
 
+  #qr-auth-img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+  }  
+  #draw-canvas{
+    position: relative;
+    left:0px;
+    top: 0px;
+  }
+  #redPointCanvas{
+    position: absolute;
+    left:0px;
+    top: 0px;
 
-  #pose-video {
+  }
+
+  .video-container {
+    position: absolute;
+    top: 20%
+   }
+   #pose-video{
     transform: scaleX(-1);
     top:0;
     left: 0;
     object-fit: cover;
-  }
+   }
 
   #pose-canvas{
     position: absolute;
-    top:0;
-    left: 0;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .canv-btn{
+    position: absolute;
+    z-index: 100;
+  }
+
+  .gradient-button {
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px;
+    color: black;
+    background-color: white;
+    padding: 10px 0;
+    width: 150px;
+    text-align: center;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .gradient-button:hover{
+    background-color: rgb(199, 199, 199);
+  }
+ 
+  .gradient-button:hover:before, .gradient-button:hover:after {
+    transform: translateX(0);
+  }
+  #inp{
+    display: inline-block;
+    background-color: white;
+    padding: 10px 0;
+    width: 200px;
+    text-align: center;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 2px;
+
+  }
+
+  .camera, .first, .canv{
+    text-align: center;
+  }
+
+  label{
+    color: black;
+    font: 1rem 'Fira Sans', sans-serif;
+  }
+  #sensComment{
+
+    width: 50px;
+    text-align: center;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 2px;
+
   }
